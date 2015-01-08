@@ -25,6 +25,12 @@
 	<% end %>
 <% end %>
 </select></p>
+
+  <p><label for="parent">Parent page</label>
+	<%= select_tag "parent", options_from_collection_for_select(@project.wiki.pages, "title", "title")%>
+  <p>
+
+  </p>
 </div>
 <br>
 <div id="preview" class="wiki"></div>

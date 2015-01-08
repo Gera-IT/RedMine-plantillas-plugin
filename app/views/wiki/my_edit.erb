@@ -18,12 +18,13 @@
 
 <% if @page.safe_attribute_names.include?('parent_id') && @wiki.pages.any? %>
   <%= fields_for @page do |fp| %>
+          <%= p @page %>
     <p>
       <label><%= l(:field_parent_title) %></label>
       <%= fp.select :parent_id,
                     content_tag('option', '', :value => '') +
                        wiki_page_options_for_select(@wiki.pages.all(:include => :parent) -
-                         @page.self_and_descendants, @page.parent) %>
+                         @page.self_and_descendants, (@page.parent|| params[:parent_id].to_i) ) %>
     </p>
   <% end %>
 <% end %>
