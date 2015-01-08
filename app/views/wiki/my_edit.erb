@@ -18,7 +18,6 @@
 
 <% if @page.safe_attribute_names.include?('parent_id') && @wiki.pages.any? %>
   <%= fields_for @page do |fp| %>
-          <%= p @page %>
     <p>
       <label><%= l(:field_parent_title) %></label>
       <%= fp.select :parent_id,

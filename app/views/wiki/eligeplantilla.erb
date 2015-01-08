@@ -27,7 +27,7 @@
 </select></p>
 
   <p><label for="parent">Parent page</label>
-	<%= select_tag "parent", options_from_collection_for_select(@project.wiki.pages, "title", "title")%>
+	<%= select_tag "parent", options_from_collection_for_select(@project.wiki.pages, "title", "title", params[:parent]), :include_blank => true%>
   <p>
 
   </p>
