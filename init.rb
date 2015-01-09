@@ -6,8 +6,6 @@ require 'dispatcher' unless Rails::VERSION::MAJOR >= 3
 if Rails::VERSION::MAJOR >= 3
 	ActionDispatch::Callbacks.to_prepare do
 		# use require_dependency if you plan to utilize development mode
-		require_dependency 'wiki_controller'
-	  WikiController.send(:include, WikiControllerPatch)
 	  require_dependency 'projects_helper'
 	  ProjectsHelper.send(:include, ProjectsHelperPatch)
 	  require_dependency 'projects_controller'
@@ -15,8 +13,6 @@ if Rails::VERSION::MAJOR >= 3
 	end
 else
 	Dispatcher.to_prepare :redmine_gsc_plantillas do
-	  require_dependency 'wiki_controller'
-	  WikiController.send(:include, WikiControllerPatch)
 	  require_dependency 'projects_helper'
 	  ProjectsHelper.send(:include, ProjectsHelperPatch)
 	  require_dependency 'projects_controller'
@@ -43,6 +39,6 @@ end
 
 class RedmineToolbarHookListener < Redmine::Hook::ViewListener
    def view_layouts_base_html_head(context)
-     stylesheet_link_tag('gsc_plantillas', :plugin => :redmine_gsc_plantillas )
+     stylesheet_link_tag('gsc_plantillas', :plugin => :redmine_gsc_plantillas ) + javascript_include_tag('templates.js', :plugin => :redmine_gsc_plantillas)
    end
 end

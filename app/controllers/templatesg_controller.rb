@@ -10,6 +10,14 @@ class TemplatesgController < ApplicationController
     render :action => "index", :layout => false if request.xhr?
   end
 
+  def all_templates
+    if params[:template]
+      @templates = {:action => :paste, :object => WikiTemplatesg.find_by_name(params[:template])}
+    else
+      @templates = {:action => :new, :collection => WikiTemplatesg.all }
+    end
+  end
+
   def new
     #if  User.current.allowed_to?(:create_templates, @project) && request.post?
     if request.post?

@@ -1,6 +1,7 @@
 # Default routes are no longer supported by Redmine
 # Added default routel
 get 'templatesg', :to => 'templatesg#index'
+get 'all_templates' => 'templatesg#all_templates'
 get 'templatesg/new', :to => 'templatesg#new'
 get 'templates/new', :to => 'templates#new'
 get 'templatesg/:id/edit', :to => 'templatesg#edit'
