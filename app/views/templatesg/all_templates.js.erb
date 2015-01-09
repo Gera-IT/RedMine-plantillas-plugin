@@ -3,8 +3,8 @@ console.log('<%= controller_name%>');
 
 <% if @templates[:action] == :new %>
     <% if controller_name == "templatesg"%>
-    <% select_opts = select_tag("template_selector", options_for_select(@templates[:collection].map{|t| [t.name, t.name]}), :include_blank => "Choose Template") %>
-    $('.jstElements').append('<%= j(select_opts) %>');
+        <% select_opts = select_tag("template_selector", options_for_select(@templates[:collection].map{|t| [t.name, t.name]})) %>
+        $('.jstElements').append('<%= j(select_opts) %>');
     <% end %>
 <% else %>
     $('.wiki-edit').val('<%= j(@templates[:object].text)%>');
