@@ -11,7 +11,8 @@ class TemplatesgController < ApplicationController
   end
 
   def all_templates
-    if params[:template]
+    render nothing: true and return if params[:template] == ""
+    if params[:template].present?
       @templates = {:action => :paste, :object => WikiTemplatesg.find_by_name(params[:template])}
     else
       @templates = {:action => :new, :collection => WikiTemplatesg.all }
