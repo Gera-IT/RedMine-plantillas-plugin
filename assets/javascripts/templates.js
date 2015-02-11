@@ -8,7 +8,7 @@ $(function(){
         });
 
         $(function(){
-            $('#template_selector').live('change', function(){
+            $(document).on('change', '#template_selector', function(){
                 $.ajax({
                     url: '/all_templates',
                     type: "GET",
