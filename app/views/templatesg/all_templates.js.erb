@@ -1,12 +1,10 @@
-
-console.log('<%= controller_name%>');
-
 <% if @templates[:action] == :new %>
     <% if controller_name == "templatesg"%>
-        <% select_opts = select_tag("template_selector", options_for_select(@templates[:collection].map{|t| [t.name, t.name]}), :include_blank => "Select Template") %>
-        $('.jstElements').append('<%= j(select_opts) %>');
+        <% select_opts = (label_tag :template) + select_tag("template_selector", options_for_select(@templates[:collection].map{|t| [t.name, t.name]}), :include_blank => "Select Template") %>
+        $('.tabular').append('<p><%= j(select_opts) %></p>');
     <% end %>
 <% else %>
     $('.wiki-edit').val('<%= j(@templates[:object].text)%>');
+    $('.redactor-editor').html('<%= j(@templates[:object].text)%>');
 <% end %>
 
